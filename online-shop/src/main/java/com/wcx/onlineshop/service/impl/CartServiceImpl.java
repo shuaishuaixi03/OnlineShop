@@ -18,10 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static com.wcx.onlineshop.consts.OnlineShopConst.CART_REDIS_KEY_TEMPLATE;
 import static com.wcx.onlineshop.enums.ResponseEnum.*;
@@ -60,7 +57,7 @@ public class CartServiceImpl implements ICartService {
 
         //商品的库存数量够不够
         if (product.getStock() <= 0) {
-            return ResponseVO.error(PRODUCT_STOCK_ERROR);
+            return ResponseVO.error(PROODUCT_STOCK_ERROR);
         }
 
 
@@ -93,12 +90,12 @@ public class CartServiceImpl implements ICartService {
         String redisKey = String.format(CART_REDIS_KEY_TEMPLATE, uid);
         Map<String, String> entries = hashOperations.entries(redisKey);
         List<Cart> cartList = new ArrayList<>();
-        List<Integer> productIdList = new ArrayList<>();
+        Set<Integer> productIdSet = new HashSet<>();
         for (Map.Entry<String, String> entry : entries.entrySet()) {
             cartList.add(gson.fromJson(entry.getValue(), Cart.class));
-            productIdList.add(Integer.valueOf(entry.getKey()));
+            productIdSet.add(Integer.valueOf(entry.getKey()));
         }
-        List<Product> productList = productMapper.selectByProductIdList(productIdList);
+        List<Product> productList = productMapper.selectByProductIdSet(productIdSet);
 
 
         Boolean selectedAll = true;
@@ -210,6 +207,20 @@ public class CartServiceImpl implements ICartService {
             sum += cart.getQuantity();
         }
         return ResponseVO.successByData(sum);
+    }
+
+    @Override
+    public List<Cart> listForCart(Integer uid) {
+        HashOperations<String, String, String> opsForHash = redisTemplate.opsForHash();
+        String redisKey  = String.format(CART_REDIS_KEY_TEMPLATE, uid);
+        Map<String, String> entries = opsForHash.entries(redisKey);
+
+        List<Cart> cartList = new ArrayList<>();
+        for (Map.Entry<String, String> entry : entries.entrySet()) {
+            cartList.add(gson.fromJson(entry.getValue(), Cart.class));
+        }
+
+        return cartList;
     }
 
     private ResponseVO<CartVO> selectAllORUnselectAll(Integer uid, Boolean target) {

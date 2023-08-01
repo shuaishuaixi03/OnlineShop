@@ -2,8 +2,11 @@ package com.wcx.onlineshop.service;
 
 import com.wcx.onlineshop.form.CartAddfForm;
 import com.wcx.onlineshop.form.CartUpdateForm;
+import com.wcx.onlineshop.pojo.Cart;
 import com.wcx.onlineshop.vo.CartVO;
 import com.wcx.onlineshop.vo.ResponseVO;
+
+import java.util.List;
 
 public interface ICartService {
 
@@ -21,6 +24,6 @@ public interface ICartService {
 
     ResponseVO<Integer> sum(Integer uid);
 
-
+    List<Cart> listForCart(Integer uid);
 
 }

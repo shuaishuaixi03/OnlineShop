@@ -16,7 +16,7 @@ import java.util.Map;
 
 
 /**
- * 订单模块
+ * 地址模块
  */
 @RestController
 public class ShippingController {

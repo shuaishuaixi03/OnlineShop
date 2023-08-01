@@ -44,7 +44,7 @@ public class ShippingServiceImpl implements IShippingService {
     public ResponseVO delete(Integer uid, Integer shippingId) {
         int row = shippingMapper.deleteByUidAndShippingId(uid, shippingId);
         if (row == 0) {
-            return ResponseVO.error(ResponseEnum.DELETE_SHIPPING_ERROR);
+            return ResponseVO.error(ResponseEnum.DELETE_SHIPPING_FAIL);
         }
         return ResponseVO.successByMsg("删除收货地址成功");
     }

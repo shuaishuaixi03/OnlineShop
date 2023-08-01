@@ -23,7 +23,7 @@ public class UserServiceImpl implements IUserService {
     public ResponseVO<User> register(User user) {
         //用户名不可以重复
         if (userMapper.countByUsername(user.getUsername()) > 0) {
-            return ResponseVO.error(UESRNAME_EXIST);
+            return ResponseVO.error(USERNAME_EXIST);
         }
         //邮箱不可以重复
         if (userMapper.countByEmail(user.getEmail()) > 0) {
