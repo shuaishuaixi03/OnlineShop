@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import static com.wcx.onlineshop.enums.ResponseEnum.*;
 
+
+/**
+ * 全局异常拦截处理器
+ */
 @ControllerAdvice
 public class RuntimeExceptionHandler {
 
@@ -20,7 +24,7 @@ public class RuntimeExceptionHandler {
         return ResponseVO.error(ERROR, e.getMessage());
     }
 
-    @ExceptionHandler(UserLoginException.class)
+    @ExceptionHandler(InvalidUserException.class)
     @ResponseBody
     public ResponseVO userLoginExceptionHandle() {
         return ResponseVO.error(NEED_LOGIN);

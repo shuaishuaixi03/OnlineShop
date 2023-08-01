@@ -1,5 +1,9 @@
 package com.wcx.onlineshop.consts;
 
+
+/**
+ * 常量类
+ */
 public class OnlineShopConst {
     public static final String CURRENT_USER = "currentUser";
     public static final Integer ROOT_PARENT_ID = 0;

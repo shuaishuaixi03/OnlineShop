@@ -16,6 +16,10 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
+
+/**
+ * 支付模块
+ */
 @Controller
 @RequestMapping("/pay")
 @Slf4j

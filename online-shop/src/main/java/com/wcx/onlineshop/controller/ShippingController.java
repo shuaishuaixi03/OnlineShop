@@ -14,6 +14,10 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Map;
 
+
+/**
+ * 订单模块
+ */
 @RestController
 public class ShippingController {
 

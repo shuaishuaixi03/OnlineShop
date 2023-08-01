@@ -8,6 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
+
+/**
+ * 支付方式配置类
+ */
 @Component
 public class BestPayConfig {
 

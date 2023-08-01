@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-
+/**
+ * 用户模块
+ */
 @RestController
 @Slf4j
 public class UserController {

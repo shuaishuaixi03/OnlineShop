@@ -2,6 +2,10 @@ package com.wcx.onlineshop.enums;
 
 import lombok.Getter;
 
+
+/**
+ * 前端响应信息枚举类
+ */
 @Getter
 public enum ResponseEnum {
     ERROR(-1, "服务端异常"),

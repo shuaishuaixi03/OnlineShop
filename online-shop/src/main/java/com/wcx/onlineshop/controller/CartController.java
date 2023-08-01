@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+
+/**
+ * 购物车模块
+ */
 @RestController
 public class CartController {
 

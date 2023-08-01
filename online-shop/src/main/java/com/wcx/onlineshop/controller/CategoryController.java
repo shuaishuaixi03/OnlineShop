@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+
+/**
+ * 商品类别模块
+ */
 @RestController
 public class CategoryController {
 
